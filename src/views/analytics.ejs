@@ -32,7 +32,7 @@
           background-color: #0077cc;
           position: fixed;
           top: 100%;
-          width: 50%;
+          width: 100%;
           height: 100%;
           /*animation: sea 10s ease-in-out;
           animation-direction: alternate;
@@ -423,48 +423,57 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-7">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center text-center mb-4">
-                                            <div class="border-right pr-4 mr-4">
-                                                <div class="mb-0">Accuracy</div>
-                                                <div class="text-amount">80%</div>
-                                            </div>
-                                   
-
-                                            <div class="border-right pr-4 mr-4">
-                                                <div class="mb-0">Precision</div>
-                                                <div class="text-amount">78%</div>
-                                            </div>
-
-                                            <div class="border-right pr-4 mr-4">
-                                                <div class="mb-0">Recall</div>
-                                                <div class="text-amount">95%</div>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <a href="#" class="btn btn-primary">Export Data <i class="material-icons">file_download</i></a>
-                                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-lg-4 card-body">
+                                    <p><strong class="headings-color">Search</strong></p>
+                                    <p class="text-muted">This is the real time readings coming from cosmosdb, you will find a refresh for this page every 30 seconds</p>
+                                </div>
+                                <div class="col-lg-8 card-form__body">
+        
+                                    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values="[&quot;js-lists-values-employee-name]">
+        
+                                        <div class="search-form search-form--light m-3">
+                                            <input type="text" class="form-control search" placeholder="Search">
+                                            <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
                                         </div>
-                                        <div class="chart" style="height: 295px;">
-                                            <canvas id="chLine">
-                                                <span style="font-size: 1rem;"><strong>Views</strong> area chart goes here.</span>
-                                            </canvas>
-                                        </div>
+        
+                                        <table class="table mb-0 thead-border-top-0">
+                                            <thead>
+                                                <tr>
+        
+                                                    <th>Scoring ID</th>
+        
+        
+                                                    <th style="width: 37px;">Value</th>
+                                                    <th style="width: 120px;">Activity Date</th>
+                                                    <th style="width: 51px;">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="list" id="staff02"><tr>
+                                                <%for (let i =0; i<scoringdata.length; i++) {%>
+
+                                                    <td>
+        
+                                                        <span class="js-lists-values-employee-name"><%=scoringdata[i].id%> </span>
+        
+                                                    </td>
+        
+        
+                                                    <td><span class=""><%=scoringdata[i].body%></span></td>
+                                                    <td><small class="text-muted"><%=scoringdata[i]._ts%></small></td>
+                                                    <td><span style="color:green" class="badge badge-<%=scoringdata[i].label%>">...</span></td>
+                                                
+                                                </tr>
+                                                <%}%>
+                                            </tbody>
+                                        </table>
                                     </div>
+        
+        
                                 </div>
                             </div>
                             <div class="col-lg-5">
-                                <div id="sea" class="sea">
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                      <defs>
-                                        <pattern id="water" width=".25" height="2" patternContentUnits="objectBoundingBox">
-                                          <path fill="#b18432" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,0.5z"/>
-                                        </pattern>
-                                      </defs>  
-                                      <rect id="waves" class="water-fill" fill="url(#water)" width="3000"/> 
-                                    </svg>
-                                  </div>
+                                
                             </div>
                         </div>
 
@@ -531,7 +540,31 @@
 
                                
                                 </ul>
-
+                                <div style="position: relative;
+                                top: 43%;
+                                background: red;
+                                color: red;
+                                z-index: 1;">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+                                <div style="position: relative;
+                                top: 50%;
+                                background: #ffc107;
+                                color: #ffc107;
+                                z-index: 1;">Warning</div>
+                                <div style="position: relative;
+                                top: 57%;
+                                background: green;
+                                color:green;
+                                z-index: 1;">safe</div>
+                                <div id="sea" class="sea" style="max-height: <%=oil%>% !important;">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                      <defs>
+                                        <pattern id="water" width=".25" height="2" patternContentUnits="objectBoundingBox">
+                                          <path fill="#b18432" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,0.5z"></path>
+                                        </pattern>
+                                      </defs>  
+                                      <rect id="waves" class="water-fill" fill="url(#water)" width="3000"></rect> 
+                                    </svg>
+                                  </div>
                                 <div class="sidebar-p-a sidebar-b-y">
                                     <div class="d-flex align-items-top mb-2">
                                         <div class="sidebar-heading m-0 p-0 flex text-body js-text-body">Warnings</div>
